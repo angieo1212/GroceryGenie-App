@@ -16,20 +16,19 @@ document.getElementById('itemInput').addEventListener('keydown', (e) => {
 
 function renderList() {
   const list = document.getElementById('groceryList');
-  const empty = document.getElementById('emptyState');
   const actions = document.getElementById('listActions');
 
   if (items.length === 0) {
-    empty.style.display = 'block';
     actions.style.display = 'none';
-    list.innerHTML = '';
-    list.appendChild(empty);
+    list.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">🛒</div>
+        <p>Your list is empty. Add some items above!</p>
+      </div>`;
     return;
   }
 
-  empty.style.display = 'none';
   actions.style.display = 'flex';
-
   list.innerHTML = items.map((item, i) => `
     <div class="grocery-item">
       <div class="item-number">${i + 1}</div>
