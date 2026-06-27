@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GroceryGenie App — Compare Prices Instantly</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="logo.png" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="logo">
+        <img src="logo.png" alt="GroceryGenie" class="logo-img" />
+        <span class="logo-text">GroceryGenie</span>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="active">Compare Prices</a>
+        <a href="#">My Lists</a>
+        <a href="#">Savings</a>
+      </div>
+      <div class="nav-user">
+        <span class="savings-badge">$0.00 saved today</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN APP -->
+  <main class="app-main">
+
+    <!-- LIST BUILDER -->
+    <section class="list-section">
+      <div class="list-header">
+        <h1>Your Grocery List</h1>
+        <p>Add items below and we'll find the best prices at Kroger, Walmart & Amazon</p>
+      </div>
+
+      <div class="add-item-form">
+        <input type="text" id="itemInput" placeholder="Add an item (e.g. milk, eggs, bread...)" />
+        <button id="addBtn" onclick="addItem()">+ Add</button>
+      </div>
+
+      <div class="grocery-list" id="groceryList">
+        <div class="empty-state" id="emptyState">
+          <div class="empty-icon">🛒</div>
+          <p>Your list is empty. Add some items above!</p>
+        </div>
+      </div>
+
+      <div class="list-actions" id="listActions" style="display:none;">
+        <button class="btn-compare" id="compareBtn" onclick="compareAll()">
+          ✦ Compare Prices at All Stores
+        </button>
+        <button class="btn-clear" onclick="clearList()">Clear List</button>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="results-section" id="resultsSection" style="display:none;">
+      <div class="results-header">
+        <h2>Price Comparison Results</h2>
+        <p id="resultsSubtitle"></p>
+      </div>
+
+      <div class="store-totals" id="storeTotals"></div>
+
+      <div class="results-table-wrap">
+        <table class="results-table" id="resultsTable">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th class="store-col kroger-col">🏪 Kroger</th>
+              <th class="store-col walmart-col">🔵 Walmart</th>
+              <th class="store-col amazon-col">📦 Amazon</th>
+              <th>Best Price</th>
+            </tr>
+          </thead>
+          <tbody id="resultsBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LOADING OVERLAY -->
+  <div class="loading-overlay" id="loadingOverlay" style="display:none;">
+    <div class="loading-box">
+      <img src="logo.png" alt="GroceryGenie" class="loading-logo" />
+      <h3>Your Genie is Working...</h3>
+      <p id="loadingText">Searching Kroger, Walmart & Amazon</p>
+      <div class="loading-bar"><div class="loading-fill" id="loadingFill"></div></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

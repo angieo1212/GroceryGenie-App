@@ -1,0 +1,8 @@
+{
+  "name": "grocerygenie-app",
+  "version": "1.0.0",
+  "description": "GroceryGenie price comparison app",
+  "scripts": {
+    "dev": "vercel dev"
+  }
+}

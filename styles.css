@@ -1,0 +1,203 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0D0118;
+  --bg2: #130820;
+  --purple: #7C3AED;
+  --purple-light: #A855F7;
+  --gold: #F59E0B;
+  --gold-light: #FCD34D;
+  --green: #10B981;
+  --glass: rgba(255,255,255,0.06);
+  --glass-border: rgba(255,255,255,0.1);
+  --text: #F1F5F9;
+  --text-muted: #94A3B8;
+  --kroger: #004990;
+  --walmart: #0071CE;
+  --amazon: #FF9900;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* NAV */
+.nav {
+  background: rgba(13,1,24,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0 24px;
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 64px;
+}
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+.logo-text { font-size: 20px; font-weight: 800; background: linear-gradient(135deg, #A855F7, #F59E0B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.nav-links { display: flex; gap: 24px; margin-left: auto; }
+.nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+.savings-badge { background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); color: var(--green); padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; }
+
+/* MAIN */
+.app-main { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+
+/* LIST SECTION */
+.list-section { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; margin-bottom: 32px; }
+.list-header { margin-bottom: 32px; }
+.list-header h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; }
+.list-header p { color: var(--text-muted); font-size: 15px; }
+
+.add-item-form { display: flex; gap: 12px; margin-bottom: 24px; }
+.add-item-form input {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 14px 20px;
+  color: var(--text);
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.add-item-form input:focus { border-color: var(--purple-light); }
+.add-item-form input::placeholder { color: var(--text-muted); }
+#addBtn {
+  background: linear-gradient(135deg, var(--purple), var(--purple-light));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+#addBtn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* GROCERY LIST */
+.grocery-list { min-height: 80px; }
+.empty-state { text-align: center; padding: 40px; color: var(--text-muted); }
+.empty-icon { font-size: 48px; margin-bottom: 12px; }
+.grocery-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  margin-bottom: 8px;
+  animation: slideIn 0.2s ease;
+}
+@keyframes slideIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+.item-number { width: 28px; height: 28px; background: var(--purple); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+.item-name { flex: 1; font-size: 15px; font-weight: 500; }
+.item-qty { display: flex; align-items: center; gap: 8px; }
+.item-qty button { background: rgba(255,255,255,0.1); border: none; color: var(--text); width: 28px; height: 28px; border-radius: 8px; cursor: pointer; font-size: 16px; }
+.item-qty span { font-size: 14px; font-weight: 600; min-width: 20px; text-align: center; }
+.item-delete { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 18px; padding: 4px; transition: color 0.2s; }
+.item-delete:hover { color: #EF4444; }
+
+/* LIST ACTIONS */
+.list-actions { display: flex; gap: 12px; margin-top: 24px; }
+.btn-compare {
+  flex: 1;
+  background: linear-gradient(135deg, var(--gold), #F97316);
+  color: #0D0118;
+  border: none;
+  border-radius: 14px;
+  padding: 16px 32px;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+.btn-compare:hover { opacity: 0.9; transform: translateY(-2px); }
+.btn-clear { background: rgba(255,255,255,0.06); border: 1px solid var(--glass-border); color: var(--text-muted); border-radius: 14px; padding: 16px 24px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.btn-clear:hover { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.3); color: #EF4444; }
+
+/* RESULTS */
+.results-section { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; }
+.results-header { margin-bottom: 32px; }
+.results-header h2 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+.results-header p { color: var(--text-muted); }
+
+/* STORE TOTALS */
+.store-totals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+.store-total-card {
+  background: rgba(255,255,255,0.04);
+  border: 2px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s;
+}
+.store-total-card.winner { border-color: var(--green); background: rgba(16,185,129,0.08); }
+.store-total-card .store-name { font-size: 14px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; }
+.store-total-card .store-total { font-size: 32px; font-weight: 800; }
+.store-total-card.winner .store-total { color: var(--green); }
+.store-total-card .winner-badge { background: var(--green); color: white; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-top: 8px; }
+.store-total-card .savings-tag { color: var(--green); font-size: 13px; font-weight: 600; margin-top: 4px; }
+
+/* RESULTS TABLE */
+.results-table-wrap { overflow-x: auto; }
+.results-table { width: 100%; border-collapse: collapse; }
+.results-table th {
+  background: rgba(255,255,255,0.05);
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.results-table th.kroger-col { color: #60A5FA; }
+.results-table th.walmart-col { color: #38BDF8; }
+.results-table th.amazon-col { color: var(--amazon); }
+.results-table td { padding: 16px; border-bottom: 1px solid var(--glass-border); font-size: 14px; }
+.results-table tr:last-child td { border-bottom: none; }
+.results-table tr:hover td { background: rgba(255,255,255,0.02); }
+.item-cell { font-weight: 600; font-size: 15px; }
+.price-cell { font-weight: 600; }
+.price-cell.best { color: var(--green); font-weight: 800; }
+.price-cell.unavail { color: var(--text-muted); font-size: 13px; }
+.best-price-cell { font-weight: 800; font-size: 16px; color: var(--green); }
+.best-store-tag { font-size: 11px; color: var(--text-muted); font-weight: 500; display: block; margin-top: 2px; }
+
+/* LOADING */
+.loading-overlay {
+  position: fixed; inset: 0;
+  background: rgba(13,1,24,0.92);
+  backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 999;
+}
+.loading-box { text-align: center; }
+.loading-logo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; animation: pulse 1.5s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+.loading-box h3 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+.loading-box p { color: var(--text-muted); margin-bottom: 24px; }
+.loading-bar { width: 280px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+.loading-fill { height: 100%; background: linear-gradient(90deg, var(--purple), var(--gold)); border-radius: 2px; animation: loadBar 2s ease-in-out infinite; }
+@keyframes loadBar { 0% { width: 0%; } 50% { width: 70%; } 100% { width: 100%; } }
+
+@media (max-width: 768px) {
+  .list-section, .results-section { padding: 24px 16px; }
+  .store-totals { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
